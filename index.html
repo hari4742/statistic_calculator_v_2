@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistic Calculator</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo"><p id="logo_word1">Statistic</p> <p id="logo_word2">Calculator</p></div>
+            </nav>
+        </header>
+        <div class="pseudo">
+        </div>
+        <section>
+            <p>How to Use this Calculator?</p>
+            <hr/>
+            <ul>
+                <li>Click on "Calculate &#x2192;" under the section which you want to calculate.</li>
+                <li>Now, Click on &#128071; to expand the section based on type of data you want to calculate.</li>
+                <li><ul>In Discrete Data Section:
+                    <li>Enter numbers seperated by ','</li>
+                    <li>Don't give spaces any where.</li>
+                    <li>Ex: "1,4,25,2,2"</li></ul>
+                </li>
+                <li>
+                    <ul>In Grouped Data section:
+                        <li>Select the type of class and click on OK.</li>
+                        <li>Enter Lower and Upper boundary values and number of rows you want. Then, Click on Make table. </li>
+                        <li>Fill the Frequency values and Click on Calculate.</li>
+                    </ul>
+                </li>
+                <li>If the Calculation has Exclusive and Inclusive sections seperatly, then skip the first step from
+                    the above Grouped Data section and proceed with step 2 and step 3.
+                </li>
+            </ul>
+        </section>
+        <main>
+            <div class="categories">
+                <div class="card">
+                    <p>Mean </p>
+                    <p class="calculate">Calculate &#x2192; </p>
+                </div>
+                <div class="card">
+                    Median
+                    <p class="calculate">Calculate &#x2192; </p>
+                </div>
+                <div class="card">Mode
+                    <p class="calculate">Calculate &#x2192;</p>
+
+                </div>
+                <!-- <div class="card">Variance
+                    <p class="calculate">Calculate &#x2192; </p>
+                </div> -->
+                <div class="card">Standard Deviation
+                    <p class="calculate">Calculate &#x2192; </p>
+
+                </div>
+                <div class="card">Moments
+                    <p class="calculate">Calculate &#x2192; </p>
+
+                </div>
+                <!-- <div class="card">Skewness
+                    <p class="calculate">Calculate &#x2192; </p>
+
+                </div>
+                <div class="card">Kurtosis
+                    <p class="calculate">Calculate &#x2192; </p>
+
+                </div> -->
+                <div class="card">Complete Analysis
+                    <p class="calculate">Calculate &#x2192; </p>
+
+                </div>
+            </div>
+
+
+            <!--   Main Container for calculation  -->
+
+
+            <!--       Mean        -->
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                <p>Mean</p>
+                <div class="discrete sub_container">
+                    <p  class="down">&#128071;</p>
+                    <p> Discrete data</p>
+                    <p>&#9758; Enter values seperated by ",".</p>
+                    <div class="discrete_input"><label for="discrete_data_mean">Enter data here: <input type="text" id="discrete_data_mean"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_mean">Calculate</button>
+                        <button id="btn_reset_data">Reset Data</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupEx sub_container">
+                    <p  class="down">&#128071;</p>
+                    <p>Exclusive Grouped Data</p>
+                    <div class="input_container">
+                        <label for="lb">Lower Boundary: <input type="number" id="lbEx"></label>
+                        <label for="ub">Upper Boundary: <input type="number" id="ubEx"></label>
+                        <label for="rowsEx">Num of Rows: <input type="number" id="rowsEx"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_Ex">Make Table</button><button id="btn_reset_table_Ex">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_Ex_mean">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency</th> <th rowspan="2">Mid Values</th> <th rowspan="2">Mid Values x Frequency</th></tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_mean_Ex">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupIn sub_container">
+                    <p class="down">&#128071;</p>
+                    <p>Inclusive Grouped Data</p>
+                    <div class="input_container">
+                        <label for="lb">Lower Boundary: <input type="number" id="lbIn"></label>
+                        <label for="ub">Upper Boundary: <input type="number" id="ubIn"></label>
+                        <label for="fr">Num of Rows: <input type="number" id="rowsIn"></label>    
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_In">Make Table</button><button id="btn_reset_table_In">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_In_mean" >
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency</th> <th rowspan="2">Mid Values</th> <th rowspan="2">Mid Values x Frequency</th></tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_mean_In">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+
+
+            <!--  Median Starts Here    -->
+
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                Median
+                <div class="discrete sub_container" id="discrete_median_container">
+                    <p class="down">&#128071;</p>
+                    <p> Discrete data</p>
+                    <p>&#9758; Enter values seperated by ",".</p>
+                    <div class="discrete_input"><label for="discrete_data_median">Enter data here: <input type="text" id="discrete_data_median"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_median">Calculate</button>
+                        <button id="btn_reset_median">Reset Data</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupEx sub_container" id="medianContainer">
+                    <p class="down">&#128071;</p>
+                    <p>Exclusive Grouped Data</p>
+                    <div class="input_container">
+                        <label for="lbMedianEx">Lower Boundary: <input type="number" id="lbMedianEx"></label>
+                        <label for="ubMedianEx">Upper Boundary: <input type="number" id="ubMedianEx"></label>
+                        <label for="rowsMedianEx">Num of Rows: <input type="number" id="rowsMedianEx"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_median_Ex">Make Table</button><button id="btn_reset_table_Median_Ex">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_Ex_median">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency</th> <th rowspan="2">Cumulative Frequency</th></tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_Medina_Ex">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupIn sub_container" id="medianContainerIn">
+                    <p class="down">&#128071;</p>
+                    <p>Inclusive Grouped Data</p>
+                    <div class="input_container">
+                        <label for="lbMedianIn">Lower Boundary: <input type="number" id="lbMedianIn"></label>
+                        <label for="ubMedianIn">Upper Boundary: <input type="number" id="ubMedianIn"></label>
+                        <label for="rowsMedianIn">Num of Rows: <input type="number" id="rowsMedianIn"></label>    
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_median_In">Make Table</button><button id="btn_reset_table_Median_In">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_In_median" >
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency</th> <th rowspan="2">Cumulative Frequency</th></tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_Median_In">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+
+            </div>
+            
+            <!--            mode container           -->
+
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                <p> Mode </p>
+                <div class="discrete sub_container" id="discrete_mode_container">
+                    <p class="down">&#128071;</p>
+                    <p> Discrete data</p>
+                    <p>&#9758; Enter values seperated by ",".</p>
+                    <div class="discrete_input"><label for="discrete_data_mode">Enter data here: <input type="text" id="discrete_data_mode"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_mode">Calculate</button>
+                        <button id="btn_reset_mode">Reset Data</button>
+                    </div>
+                </div>
+                <div class="groupEx sub_container" id="mode_Grp_Container">
+                    <p class="down">&#128071;</p>
+                    <p>Grouped Data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Class</p>
+                        <label for="ExMode"><input type="radio" id="ExMode" name="typeOfClsMode" checked>Exclusive Classes</label>
+                        <label for="InMode"><input type="radio" id="InMode" name="typeOfClsMode">Inclusive Classes</label>
+                        <input type="submit" value="Ok" id="btn_submit_cls_mode">
+                        <p id="noteMode">Note: Please Select type of class before making a table.</p>
+                    </div> 
+                    <div class="input_container">
+                        <label for="mode_lb_inputGrp">Lower Boundary: <input type="number" id="mode_lb_inputGrp"></label>
+                        <label for="mode_ub_inputGrp">Upper Boundary: <input type="number" id="mode_ub_inputGrp"></label>
+                        <label for="rowsModeGrp">Num of Rows: <input type="number" id="rowsModeGrp"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_ModeGrp">Make Table</button><button id="btn_reset_table_ModeGrp">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_ModeGrp">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency <p>(F<sub>i</sub>)</p></th> </tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_ModeGrp">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+            <!-- <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                Variance
+
+            </div> -->
+
+
+            <!--        Standard Deviation      -->
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                <p>Standard Deviation</p>
+                <div class="discrete sub_container" id="std_discrete_container">
+                    <p class="down">&#128071;</p>
+                    <p> Discrete data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Data</p>
+                        <label for="pop"><input type="radio" id="pop" name="typeOfData" checked>Population Data</label>
+                        <label for="sam"><input type="radio" id="sam" name="typeOfData">Sample Data</label>
+                        <input type="submit" value="Ok" id="btn_submit_data">
+                        <p id="noteData">Note: Please Select type of data before calculating.</p>
+                    </div> 
+                    <p>&#9758; Enter values seperated by ","</p>
+                    <div class="discrete_input"><label for="discrete_data_std">Enter data here: <input type="text" id="discrete_data_std"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_std">Calculate</button>
+                        <button id="btn_reset_data_std">Reset Data</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupEx sub_container" id="std_Ex_Container">
+                    <p class="down">&#128071;</p>
+                    <p>Grouped Data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Class</p>
+                        <label for="ExStd"><input type="radio" id="ExStd" name="typeOfCls" checked>Exclusive Classes</label>
+                        <label for="InStd"><input type="radio" id="InStd" name="typeOfCls">Inclusive Classes</label>
+                        <input type="submit" value="Ok" id="btn_submit_cls">
+                        <p id="note">Note: Please Select type of class before making a table.</p>
+                    </div> 
+                    <div class="input_container">
+                        <label for="std_lb_inputEx">Lower Boundary: <input type="number" id="std_lb_inputEx"></label>
+                        <label for="std_ub_inputEx">Upper Boundary: <input type="number" id="std_ub_inputEx"></label>
+                        <label for="rowsStdEx">Num of Rows: <input type="number" id="rowsStdEx"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_Std_Ex">Make Table</button><button id="btn_reset_table_Std_Ex">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_Ex_Std">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency (F<sub>i</sub>)</th> <th rowspan="2">X<sub>i</sub></th> <th rowspan="2">F<sub>i</sub>(X<sub>i</sub>-Mean) <sup>2</sup></th></tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_Std_Ex">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupIn sub_container">
+                    <p class="down">&#128071;</p>
+                    <p>Combined Standard Deviation</p>
+                    <p>&#9758; Here you can find the combined Standard Deviation of two 
+                        different datasets. For that we need to know Total Frequency(size), Mean, Standard Deviation of two datasets.
+                    </p>
+                
+                    <div class="StdComb">
+                        <table >
+                            <tr><th></th> <th>Data Set 1</th> <th>Data Set 2</th></tr>
+                            <tr><th>Size</th> <td>n<sub>1</sub>: <input type="number" id="n1" class="StdCombInput"></td> <td>n<sub>2</sub>: <input type="number" id="n2" class="StdCombInput"></td> </tr>
+                            <tr><th>Mean</th> <td>x&#772<sub>1</sub>: <input type="number" id="x1" class="StdCombInput"></td> <td>x&#772<sub>2</sub>: <input type="number" id="x2" class="StdCombInput"></td></tr>
+                            <tr><th>S.D</th> <td>&#963<sub>1</sub>: <input type="number" id="s1" class="StdCombInput"></td><td>&#963<sub>2</sub>: <input type="number" id="s2" class="StdCombInput"></td> </tr>
+                        </table>
+                        <div class="input_container">
+                            <button id="cal_Std_Comb">Calculate</button>
+                            <button id="btn_reset_data_Std_comb">Reset Data</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                <p>Moments</p>
+                <div class="discrete sub_container" id="discrete_moments_container">
+                    <p class="down">&#128071;</p>
+                    <p>Discrete data</p>
+                    <p>&#9758; Here you can calculate Moments about Mean for a Discrete Data.</p>
+                    <p>&#9758; Enter values seperated by ",".</p>
+                    <div class="discrete_input"><label for="discrete_data_moments">Enter data here: <input type="text" id="discrete_data_moments"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_moments">Calculate</button>
+                        <button id="btn_reset_moments">Reset Data</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupEx sub_container" id="Moments_grp_Container">
+                    <p class="down">&#128071;</p>
+                    <p>Grouped Data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Class</p>
+                        <label for="ExMoment"><input type="radio" id="ExMoment" name="typeOfClsMoments" checked>Exclusive Classes</label>
+                        <label for="InMoment"><input type="radio" id="InMoment" name="typeOfClsMoments">Inclusive Classes</label>
+                        <input type="submit" value="Ok" id="btn_submit_moment">
+                        <p id="noteMoment">Note: Please Select type of class before making a table.</p>
+                    </div> 
+                    <div class="input_container">
+                        <label for="moment_lb_input">Lower Boundary: <input type="number" id="moment_lb_input"></label>
+                        <label for="moment_ub_input">Upper Boundary: <input type="number" id="moment_ub_input"></label>
+                        <label for="rowsMoment">Num of Rows: <input type="number" id="rowsMoment"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_Moment">Make Table</button>
+                        <button id="btn_reset_table_Moment">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_Moment">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2"><p>f<sub>i</sub></p></th> <th rowspan="2">X<sub>i</sub></th> <th rowspan="2">f<sub>i</sub>(x<sub>i</sub>-x&#772)</th>  <th rowspan="2">f<sub>i</sub>(x<sub>i</sub>-x&#772)<sup>2</sup></th>  <th rowspan="2">f<sub>i</sub>(x<sub>i</sub>-x&#772)<sup>3</sup></th>  <th rowspan="2">f<sub>i</sub>(x<sub>i</sub>-x&#772)<sup>4</sup></th></tr>
+                            <tr><th><p>Lower Boundary</p></th> <th><p>Upper Boundary</p></th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_Moment_grp">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="sub_container">
+                    <p class="down">&#128071;</p>
+                    <p>Moments From Known Values</p>
+                    <p>&#9758; Here, You can calculate Moments about Any point If you know Moments about Mean and Vice Versa.</p>
+                    <br>
+                    <div class="input_container_Moments" id="mapContainer">
+                        <p>Moments about Any Point</p>
+                        <div class="input_container">   <!--  MAP stands for Moments About Point-->
+                            <label for="point">A: <input type="number" id="point" class="map_input"></label>
+                            <label for="MAPM">Mean: <input type="number" id="MAPM" class="map_input"></label>
+                            <label for="">&#956<sub>1</sub>: <input type="number" value="0"></label>
+                            <label for="MAPM2">&#956<sub>2</sub>: <input type="number" id="MAPM2" class="map_input"></label>
+                            <label for="MAPM3">&#956<sub>3</sub>: <input type="number" id="MAPM3" class="map_input"></label>
+                            <label for="MAPM4">&#956<sub>4</sub>: <input type="number" id="MAPM4" class="map_input"></label>
+                        </div>
+                        <div class="input_container">
+                            <button id="cal_MAP">Calculate</button>
+                            <button id="btn_reset_MAP">Reset Data</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="input_container_Moments" id="mamContainer">
+                        <p>Moments about Mean</p>
+                        <div class="input_container">
+                            <label for="point">A: <input type="number" id="pointMam" class="mam_input"></label>
+                            <label for="MAMM1">&#956'<sub>1</sub>: <input type="number" id="MAMM1" class="mam_input"></label>
+                            <label for="MAMM2">&#956'<sub>2</sub>: <input type="number" id="MAMM2" class="mam_input"></label>
+                            <label for="MAMM3">&#956'<sub>3</sub>: <input type="number" id="MAMM3" class="mam_input"></label>
+                            <label for="MAMM4">&#956'<sub>4</sub>: <input type="number" id="MAMM4" class="mam_input"></label>
+                        </div>
+                        <div class="input_container">
+                            <button id="cal_MAM">Calculate</button>
+                            <button id="btn_reset_MAM">Reset Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                Skewness
+
+            </div>
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                Kurtosis
+
+            </div> -->
+            <div class="cal_container">
+                <div class="back">back &#8592;</div>
+                <p> Complete Analysis </p>
+                <div class="discrete sub_container" id="comp_dis_container">
+                    <p class="down">&#128071;</p>
+                    <p> Discrete data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Data</p>
+                        <label for="pop_comp"><input type="radio" id="pop_comp" name="typeOfData_comp" checked>Population Data</label>
+                        <label for="sam_comp"><input type="radio" id="sam_comp" name="typeOfData_comp">Sample Data</label>
+                        <input type="submit" value="Ok" id="btn_submit_data_comp">
+                        <p id="noteDataComp">Note: Please Select type of data before calculating.</p>
+                    </div> 
+                    <p>&#9758; Enter values seperated by ","</p>
+                    <div class="discrete_input"><label for="discrete_data_comp">Enter data here: <input type="text" id="discrete_data_comp"></label></div>
+                    <div class="input_container">
+                        <button id="btn_discrete_comp">Calculate</button>
+                        <button id="btn_reset_data_comp">Reset Data</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="groupEx sub_container" id="Comp_grp_Container">
+                    <p class="down">&#128071;</p>
+                    <p>Grouped Data</p>
+                    <div class="typeOfCls">
+                        <p>Type Of Class</p>
+                        <label for="ExComp"><input type="radio" id="ExComp" name="typeOfClsComp" checked>Exclusive Classes</label>
+                        <label for="InComp"><input type="radio" id="InComp" name="typeOfClsComp">Inclusive Classes</label>
+                        <input type="submit" value="Ok" id="btn_submit_Comp">
+                        <p id="noteComp">Note: Please Select type of class before making a table.</p>
+                    </div> 
+                    <div class="input_container">
+                        <label for="comp_lb_input">Lower Boundary: <input type="number" id="comp_lb_input"></label>
+                        <label for="comp_ub_input">Upper Boundary: <input type="number" id="comp_ub_input"></label>
+                        <label for="rowsComp">Num of Rows: <input type="number" id="rowsComp"></label>
+                    </div>
+                    <div class="input_container">
+                        <button id="make_table_Comp">Make Table</button>
+                        <button id="btn_reset_table_Comp">Reset Table</button>
+                    </div>
+                    <div class="table_container">
+                        <table id="data_table_Comp">
+                            <tr><th colspan="2">Classes</th> <th rowspan="2">Frequency</th> </tr>
+                            <tr><th>Lower Boundary</th> <th>Upper Boundary</th></tr>
+                        </table>
+                    </div>
+                    <div class="input_container">
+                        <button id="cal_Comp_grp">Calculate</button>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+            <footer id="foot">
+    
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
